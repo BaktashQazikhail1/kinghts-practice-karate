@@ -1,0 +1,20 @@
+Feature: Plan Testing
+
+  Background: Setup test
+    Given url "https://qa.insurance-api.tekschool-students.com"
+
+    Scenario: Validate /api/plans/get-all-code
+      Given path "api/token"
+      Given request {"username" : "supervisor","password" : "tek_supervisor"}
+      When method post
+      And print response
+      * def validToken = "Bearer " + response.token
+      Given path "api/plans/get-all-plan-code"
+      Given header Authorization = "Bearer " + response.token
+      When method get
+      Then status 200
+      And print response
+      And assert response [0].planExpired == false
+      And assert response [1].planExpired == false
+      And assert response [2].planExpired == false
+      And assert response [3].planExpired == false
