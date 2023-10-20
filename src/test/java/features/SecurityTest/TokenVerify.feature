@@ -51,3 +51,6 @@ Feature:
     And print response
     And assert response.errorMessage == "Wrong Username send along with Token"
 
+    Scenario: Create account with existing email /api/account/add-primary-account validate response
+
+
