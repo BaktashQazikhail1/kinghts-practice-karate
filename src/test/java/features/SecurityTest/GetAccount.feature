@@ -5,7 +5,7 @@ Feature: Get Account Feature Testing
     * def tokenResult = callonce read('GenerateToken.feature')
     And print tokenResult
     * def validToken = "Bearer " + tokenResult.response.token
-    
+
   Scenario: Testing endpoint /api/accounts/get-account
     Given path "/api/accounts/get-account"
     * def expectedId = 14
